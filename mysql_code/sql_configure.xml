@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configure>
+    <!--<server>
+        <host>192.168.2.247</host>
+        <username>root</username>
+        <password>Abc1230</password>
+        <database>test</database>
+    </server>-->
+    <server>
+        <host>192.168.3.234</host>
+        <username>root</username>
+        <password>Abc1230</password>
+        <database>test_db</database>
+    </server>
+</configure>
