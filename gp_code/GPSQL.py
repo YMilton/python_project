@@ -82,3 +82,17 @@ def query_df(sql):
     print('%d data query success!'% (df.shape[0]))
 
     return df
+
+
+# 表的数据更新
+def update_table(sql):
+    conn = get_gp_conn()
+    try:
+        cur = conn.cursor()
+        cur.execute(sql)
+        conn.commit()
+        cur.close()
+        conn.close()
+        print('table data update success!')
+    except Exception as e:
+        print(e)
