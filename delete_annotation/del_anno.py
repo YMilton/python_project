@@ -34,17 +34,21 @@ def del_file_anno(fileName, newFileName, encode='gbk',
             fw.write(line)
 
 
-def del_dir_anno(dir, new_dir):
+def del_dir_anno(dir, new_dir, suffix=".cpp,.h"):
     # 文件不存在则创建
     if not os.path.exists(new_dir):
         os.mkdir(new_dir)
 
+    suffixs = suffix.split(",")
+
     fileNames = os.listdir(dir)
     for file in fileNames:
-        myFile = os.path.join(dir, file)
-        myNewFile = os.path.join(new_dir, file)
-        del_file_anno(myFile, myNewFile)
-        print(myFile, " process success!")
+        flag = suffixs[0] in file or suffixs[1] in file
+        if flag:
+            myFile = os.path.join(dir, file)
+            myNewFile = os.path.join(new_dir, file)
+            del_file_anno(myFile, myNewFile)
+            print(myFile, " process success!")
 
 
 if __name__ == '__main__':
