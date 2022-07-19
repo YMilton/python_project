@@ -3,15 +3,16 @@
     @Author YMilton
 """
 import os
+import argparse
 
 
 ''' 删除单个文件的注释 '''
-def del_file_anno(fileName, newFileName, encode='utf-8',
+def del_file_anno(fileName, newFileName, encode='gbk',
              annoLine="//", annoLines={'begin':'/*', 'end':'*/'}):
     with open(fileName, 'r', encoding=encode) as f:
         content = f.readlines()
 
-    with open(newFileName, 'w', encoding=encode) as fw:
+    with open(newFileName, 'w', encoding='utf-8') as fw:
         flag = False
         for line in content:
             if annoLine in line:
@@ -47,4 +48,8 @@ def del_dir_anno(dir, new_dir):
 
 
 if __name__ == '__main__':
-    pass
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-dir', type=str, default='./dir/', help='delete annotation directory!')
+    parser.add_argument('-new_dir', type=str, default='./new_dir/', help='delete annotation new directory!')
+    args = parser.parse_args()
+    del_dir_anno(args.dir, args.new_dir)
