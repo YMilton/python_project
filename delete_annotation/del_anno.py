@@ -16,7 +16,11 @@ def del_file_anno(fileName, newFileName, encode='gbk',
         flag = False
         for line in content:
             if annoLine in line:
-                continue
+                line = line[:line.index("//")]
+                if line.strip() == "":
+                    continue
+                else:
+                    line = line+"\n"
             if annoLines['begin'] in line:
                 if annoLines['end'] in line:  # /* */在同一行
                     continue
